@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background: rgb(203, 165, 88); */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #3d3d3d;
+}
+.container{
+    position: absolute;
+    display: flex;
+    transform-style: preserve-3d;
+    gap: 10px;
+    transform: rotateY(30deg) rotateX(10deg);
+}
+.text{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transition: 2.5s ease-in-out;
+    transition-delay: calc(.25s * var(--j));
+}
+.text span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-size: 4em;
+    cursor: default;
+    background: linear-gradient(#434343,#535353);
+    transform-style: preserve-3d;
+    transform: rotateX(calc(90deg * var(--i))) translateZ(50px);
+}
+.text::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #373737;
+    transform-origin: left;
+    transform: rotateY(90deg) translateX(-50px);
+}
+.text:last-child span{
+    background: linear-gradient(#29c040, #32Ed4e);
+}
+.text:last-child::before{
+    background-color: #11a728;
+}
+h2{
+    position: absolute;
+    bottom: 50px;
+    color: #67ebfc;
+    font-size: 2em;
+    transform: 0.5s;
+    cursor: pointer;
+}
+h2.active{
+    color: rgb(248, 246, 246);
+    text-shadow: 0 0 20px white, 0 0 50px white;
+}
+h2::after{
+    content: " 2024";
+    transition: 0.5s;
+}
+h2.active::after{
+    color: #32Ed4e;
+    text-shadow: 0 0 20px #32Ed4e, 0 0 50px #32Ed4e;
+}
+.container.newyear .text{
+    transform: rotateX(calc(-360deg * 1));
+}
+.container.newyear .text:last-child{
+    transform: rotateX(calc(-630deg * 1));
+}
+.glowing{
+    position: absolute;
+    min-width: 750px;
+    height: 750px;
+    pointer-events: none;
+    margin: -150px;
+}
+.glowing span{
+    position: absolute;
+    top: calc(80px * var(--i));
+    left: calc(80px * var(--i));
+    bottom: calc(80px * var(--i));
+    right: calc(80px * var(--i));
+    border-radius: 50%;
+    box-sizing: border-box;
+}
